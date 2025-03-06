@@ -1,9 +1,15 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { AppBar, Toolbar, Typography, Button, Container } from "@mui/material";
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { AppBar, Toolbar, Typography, Button } from "@mui/material";
 import smuLogo from "/Users/aubreighdaculug/Desktop/SMU Alumni/SMU-Alumni/frontend/src/Assets/smulogo.png"; // Updated logo import
 
 function HomePage() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    navigate("/login"); // Redirect to login/signup immediately
+  }, [navigate]);
+
   return (
     <div
       style={{
@@ -20,20 +26,12 @@ function HomePage() {
             <Typography variant="h6" style={{ color: "#1a202c", fontWeight: "500" }}>SMU Alumni</Typography>
           </div>
           <div>
-            <Button component={Link} to="/login" variant="outlined" style={{ borderColor: "#1a202c", color: "#1a202c" }}>
+            <Button onClick={() => navigate("/login")} variant="outlined" style={{ borderColor: "#1a202c", color: "#1a202c" }}>
               <b>Log In</b>
             </Button>
           </div>
         </Toolbar>
       </AppBar>
-      <Container maxWidth="md" style={{ textAlign: "center", paddingTop: "50px" }}>
-        <Typography variant="h3" style={{ fontWeight: "bold", color: "#1a202c" }}>
-          Welcome to <span style={{ color: "#1a202c" }}>SMU Alumni</span>
-        </Typography>
-        <Typography variant="h6" style={{ color: "#4a5568", marginTop: "20px" }}>
-          Welcome message here
-        </Typography>
-      </Container>
     </div>
   );
 }
